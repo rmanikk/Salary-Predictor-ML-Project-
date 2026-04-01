@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Salary Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>  Salary Predictior </h2>
+
+    <form action="/predict" method="post">
+
+        <label>Experience (years):</label>
+        <input type="number" name="experience" step="0.1" required>
+
+        <label>Age:</label>
+        <input type="number" name="age" required>
+
+        <label>Education:</label>
+        <select name="education">
+            <option>Bachelors</option>
+            <option>Masters</option>
+            <option>PhD</option>
+        </select>
+
+        <label>Work Type:</label>
+        <select name="work_type">
+            <option>Onsite</option>
+            <option>Remote</option>
+        </select>
+
+        <button type="submit">Predict Salary</button>
+
+    </form>
+
+    {% if result %}
+        <div class="result">
+            💰 Predicted Salary: {{ result }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
